@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Gola 💕</title>
+
+<style>
+body {
+    background: #ffe6f2;
+    font-family: 'Comic Sans MS', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* MAIN CARD */
+.container {
+    background: white;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 350px;
+    width: 85%;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* POEM */
+.poem {
+    font-size: 13px;
+    color: #d63384;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-weight: bold;
+    white-space: pre-line;
+}
+
+/* FLOATING TEXT */
+.floating-text {
+    font-size: 14px;
+    color: #ff4d94;
+    margin-bottom: 10px;
+    animation: float 1.5s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+    100% { transform: translateY(0); }
+}
+
+/* BUTTON CONTAINER */
+.btn-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: relative;
+    min-height: 60px;
+}
+
+/* YES BUTTON */
+#yesBtn {
+    background: #ff4d94;
+    color: white;
+    border: none;
+    padding: 10px 26px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(255,77,148,0.3);
+}
+
+/* NO BUTTON — CURSOR AVOID + 360 FLOAT */
+#noBtn {
+    background: #adb5bd;
+    color: white;
+    border: none;
+    padding: 10px 26px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    position: fixed;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+    animation: fastBlink 0.25s infinite, spinFloat 1s infinite ease-in-out;
+    transition: all 0.07s ease-out;
+}
+
+/* FAST BLINK */
+@keyframes fastBlink {
+    0% { opacity: 1; }
+    50% { opacity: 0.15; }
+    100% { opacity: 1; }
+}
+
+/* 360 FLOAT */
+@keyframes spinFloat {
+    0%   { transform: translate(0, 0) rotate(0deg); }
+    25%  { transform: translate(6px, -5px) rotate(4deg); }
+    50%  { transform: translate(-5px, 4px) rotate(-4deg); }
+    75%  { transform: translate(4px, 5px) rotate(3deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* SMALL POP TEXT FOR NO BUTTON */
+#noPop {
+    position: fixed;
+    color: #ff4d94;
+    font-size: 14px;
+    font-weight: bold;
+    display: none;
+}
+
+/* SUCCESS CARD */
+.hidden {
+    display: none;
+}
+
+/* HEART FRAME FOR YOUR PHOTO */
+.heart-frame {
+    width: 250px;
+    height: 250px;
+    margin: 15px auto;
+    border-radius: 50% 50% 45% 45%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* SMOOTH FADE-IN */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.heart-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* FALLING HEARTS */
+.heart {
+    position: fixed;
+    top: -10px;
+    font-size: 22px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    from { transform: translateY(-10px); }
+    to { transform: translateY(110vh); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FALLING HEARTS -->
+<div id="hearts"></div>
+
+<!-- NO BUTTON POP TEXT -->
+<div id="noPop">Nice try 😏</div>
+
+<!-- MAIN SCREEN -->
+<div class="container" id="mainCard">
+
+<div class="poem">
+HAR MAUSAM TUMHARE SATH DEKHU,,
+DIN SE BADALTI RAT DEKHU,,
+HR SAAS TERE NAM KI HO,
+MAIN HAR MANZIL MEIN TERA RAAH DEKHU....
+
+<span style="font-size:10px; display:block; margin-top:5px;">- THE GREAT ROSHAN</span>
+</div>
+
+<p class="floating-text">Choose wisely 💕</p>
+
+<h1>Gola, will you be my Valentine… and my forever? 💕</h1>
+
+<div class="btn-container">
+    <button id="yesBtn" onclick="showSuccess()">Yes, Forever 💕</button>
+</div>
+
+</div>
+
+<!-- NO BUTTON (FULL SCREEN RUNNER) -->
+<button id="noBtn">No</button>
+
+<!-- SUCCESS SCREEN -->
+<div class="container hidden" id="successCard">
+<h1>TUM MERE JAAL MEIN FAS GAE HO😂😂</h1>
+<h3 style="color:#ff4d94;">LOVE  YOU SO MUCH MERA GOLA ❤️💕</h3>
+
+<div class="heart-frame">
+<img src="https://i.ibb.co/gLDVrGHw/your-photo.jpg" alt="Our Photo">
+</div>
+</div>
+
+<!-- BACKGROUND MUSIC (BOLLYWOOD-STYLE, ROYALTY-FREE) -->
+<audio id="bgMusic" loop>
+  <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-piano-1143.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const noPop = document.getElementById("noPop");
+
+/* CURSOR-AVOID MOVEMENT */
+document.addEventListener("mousemove", function(e) {
+    const rect = noBtn.getBoundingClientRect();
+    const btnX = rect.left + rect.width / 2;
+    const btnY = rect.top + rect.height / 2;
+
+    const dist = Math.hypot(e.clientX - btnX, e.clientY - btnY);
+
+    if (dist < 150) {
+        const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+        const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+
+        let newX = Math.random() * maxX;
+        let newY = Math.random() * maxY;
+
+        noBtn.style.left = newX + "px";
+        noBtn.style.top = newY + "px";
+
+        noPop.style.left = (newX + 10) + "px";
+        noPop.style.top = (newY - 25) + "px";
+        noPop.style.display = "block";
+
+        setTimeout(() => noPop.style.display = "none", 800);
+    }
+});
+
+/* SHOW SUCCESS SCREEN + PLAY MUSIC */
+function showSuccess() {
+    document.getElementById('mainCard').classList.add('hidden');
+    document.getElementById('successCard').classList.remove('hidden');
+    noBtn.style.display = "none";
+
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.2; // LOW VOLUME (as per your choice)
+    music.play();
+}
+
+/* FAST + MANY FALLING HEARTS (RED + PINK MIX) */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💗";
+    heart.classList.add("heart");
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 2 + 1) + "s";
+
+    document.getElementById("hearts").appendChild(heart);
+
+    setTimeout(() => heart.remove(), 3000);
+}
+
+setInterval(createHeart, 120);
+</script>
+
+</body>
+</html>
